@@ -6,7 +6,10 @@
 var express = require('express')
   , routes = require('./routes');
 
+var GamesProvider = require('./data/gamesProvider').GamesProvider;
+
 var app = module.exports = express.createServer();
+
 
 // Configuration
 
@@ -29,7 +32,7 @@ app.configure('production', function(){
 
 //Database
 // Season - year
-// Game - Season, week number, hometeam, awayteam, hometeam spread, hometeam score, awayteam score, winner, time
+// Game - Season, week number, hometeam, awayteam, hometeam spread, hometeam score, awayteam score, winner, last_updated, created_at
 // Player - name, belongs to Leagues
 // Picks - Game, Player, pickedteam
 // Stats - Player, week_number, wins, losses, ties, homepicks, awaypicks
@@ -45,7 +48,13 @@ var users = [
 
 // Routes
 
-app.get('/', routes.index);
+var gamesProvider = new GamesProvider();
+
+app.get('/', function(req, res) {
+	gamesProvider.findAll(function(error, games) {
+		res.render('index', { games: games });
+	});
+});
 
 app.get('/users', function(req, res) {
 	res.render('users', { title: 'Express', users: users });
