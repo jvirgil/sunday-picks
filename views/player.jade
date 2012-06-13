@@ -1,0 +1,13 @@
+tr
+	td= player.name
+	td= player.wins
+	td= player.losses
+	td= player.ties
+	- if (player.gamesback)
+		td= player.gamesback
+	- else
+		td -
+	td 6
+	td 8
+	td -
+
