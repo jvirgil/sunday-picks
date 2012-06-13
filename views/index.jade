@@ -29,7 +29,6 @@ div.container-fluid
 	div.row-fluid
 		div.span8
 			h2 Week
-			hr
 			p
 				table.table
 					thead
@@ -82,30 +81,5 @@ div.container-fluid
 							th L
 							th T
 					tbody
-						tr
-							td Ruben James
-							td 30
-							td 24
-							td 3
-							td -
-							td 6
-							td 8
-							td -
-						tr
-							td Gumba Tomai
-							td 29
-							td 24
-							td 3
-							td 1
-							td 7
-							td 7
-							td -
-						tr
-							td Juan Carlos
-							td 24
-							td 30
-							td 3
-							td 6
-							td 9
-							td 5
-							td -
+						-each player in players
+							!=partial('player', { player: player });

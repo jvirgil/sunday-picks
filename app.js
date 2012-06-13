@@ -6,6 +6,7 @@
 var express = require('express')
   , routes = require('./routes');
 
+var PlayersProvider = require('./data/playersProvider').PlayersProvider;
 var GamesProvider = require('./data/gamesProvider').GamesProvider;
 
 var app = module.exports = express.createServer();
@@ -34,7 +35,7 @@ app.configure('production', function(){
 // Season - year
 // Game - Season, week number, hometeam, awayteam, hometeam spread, hometeam score, awayteam score, winner, last_updated, created_at
 // Player - name, belongs to Leagues
-// Picks - Game, Player, pickedteam
+// Picks - Season, Year, Game, Player, pickedteam
 // Stats - Player, week_number, wins, losses, ties, homepicks, awaypicks
 
 
@@ -49,16 +50,18 @@ var users = [
 // Routes
 
 var gamesProvider = new GamesProvider();
+var playersProvider = new PlayersProvider();
+var current_week = 2;
 
 app.get('/', function(req, res) {
-	gamesProvider.findAll(function(error, games) {
-		res.render('index', { games: games });
+	playersProvider.findAll(function(error, players) {
+		gamesProvider.findByWeek(current_week, function(error, games) {
+			res.render('index', { games: games, players: players });
+		});
 	});
 });
 
-app.get('/users', function(req, res) {
-	res.render('users', { title: 'Express', users: users });
-});
+
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
