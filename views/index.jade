@@ -62,16 +62,8 @@ div.container-fluid
 							th Home Team
 							th Spread
 					tbody
-						tr
-							td Jacksonville
-							td @
-							td Jets
-							td -3
-						tr
-							td Giants
-							td @
-							td Philadelphia
-							td -8
+						-each game in games
+							!=partial('game', { game: game });
 		div.span4
 			h2 Standings
 			p
