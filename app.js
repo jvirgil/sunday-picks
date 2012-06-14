@@ -69,6 +69,7 @@ app.get('/week', function(req,res) {
 	});
 });
 
+
 app.get('/week/:weeknum', function(req,res) {
 	var weeknum = req.params.weeknum;
 	// need to put some error handling/checking on the weeknumber
