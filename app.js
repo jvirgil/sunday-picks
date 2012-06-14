@@ -61,6 +61,24 @@ app.get('/', function(req, res) {
 	});
 });
 
+app.get('/week', function(req,res) {
+	playersProvider.findAll(function(error, players) {
+		gamesProvider.findByWeek(current_week, function(error, games) {
+			res.render('index', { games: games, players: players });
+		});
+	});
+});
+
+app.get('/week/:weeknum', function(req,res) {
+	var weeknum = req.params.weeknum;
+	// need to put some error handling/checking on the weeknumber
+	playersProvider.findAll(function(error, players) {
+		gamesProvider.findByWeek(weeknum, function(error, games) {
+			res.render('index', { games: games, players: players });
+		});
+	});
+});
+
 
 
 app.listen(3000, function(){
