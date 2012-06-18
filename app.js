@@ -11,7 +11,6 @@ var GamesProvider = require('./data/gamesProvider').GamesProvider;
 
 var app = module.exports = express.createServer();
 
-
 // Configuration
 
 app.configure(function(){
@@ -53,6 +52,10 @@ var gamesProvider = new GamesProvider();
 var playersProvider = new PlayersProvider();
 var current_week = 2;
 
+require('./routes/week')(app, current_week);
+
+
+
 app.get('/', function(req, res) {
 	playersProvider.findAll(function(error, players) {
 		gamesProvider.findByWeek(current_week, function(error, games) {
@@ -60,26 +63,6 @@ app.get('/', function(req, res) {
 		});
 	});
 });
-
-app.get('/week', function(req,res) {
-	playersProvider.findAll(function(error, players) {
-		gamesProvider.findByWeek(current_week, function(error, games) {
-			res.render('index', { games: games, players: players });
-		});
-	});
-});
-
-
-app.get('/week/:weeknum', function(req,res) {
-	var weeknum = req.params.weeknum;
-	// need to put some error handling/checking on the weeknumber
-	playersProvider.findAll(function(error, players) {
-		gamesProvider.findByWeek(weeknum, function(error, games) {
-			res.render('index', { games: games, players: players });
-		});
-	});
-});
-
 
 
 app.listen(3000, function(){
