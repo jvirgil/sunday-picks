@@ -6,10 +6,14 @@
 var express = require('express')
   , routes = require('./routes');
 
+var mongoose = require('mongoose');
+
 var PlayersProvider = require('./data/playersProvider').PlayersProvider;
 var GamesProvider = require('./data/gamesProvider').GamesProvider;
 
 var app = module.exports = express.createServer();
+
+mongoose.connect('mongodb://localhost/sunday_picks_test');
 
 // Configuration
 

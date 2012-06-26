@@ -7,10 +7,17 @@ var GamesProvider = require('../data/gamesProvider').GamesProvider;
 var gamesProvider = new GamesProvider();
 var playersProvider = new PlayersProvider();
 
+var Players = require('../lib/player.js');
+
 module.exports = function(app, current_week) {
 
 		app.get('/week', function(req,res) {
-			playersProvider.findAll(function(error, players) {
+			console.log("TYPE: " + Players.modeltype);
+
+// need to embed the season the user is looking at and should pass this in at some point
+			Players.getAll(function(error, players) {
+				console.log('HERE : ' + players);
+//			playersProvider.findAll(function(error, players) {
 				gamesProvider.findByWeek(current_week, function(error, games) {
 					res.render('index', { games: games, players: players });
 				});
