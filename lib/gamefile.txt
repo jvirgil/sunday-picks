@@ -15,4 +15,19 @@ Year	Week	Date	HomeTeam	AwayTeam	StartTime
 2012	1	2012-09-09	Denver	Pittsburgh	8:20pm
 2012	1	2012-09-10	Baltimore	Cincinnati	7:00pm
 2012	1	2012-09-10	San Diego	Oakland	10:15pm
-
+2012	2	2012-09-13	Green Bay	Chicago	8:20pm
+2012	2	2012-09-16	Giants	Tampa Bay	1:00pm
+2012	2	2012-09-16	Miami	Oakland	1:00pm
+2012	2	2012-09-16	Jacksonville	Houston	1:00pm
+2012	2	2012-09-16	Cincinnati	Cleveland	1:00pm
+2012	2	2012-09-16	Buffalo	Kansas City	1:00pm
+2012	2	2012-09-16	Philadelphia	Baltimore	1:00pm
+2012	2	2012-09-16	Carolina	New Orleans	1:00pm
+2012	2	2012-09-16	New England	Arizona	1:00pm
+2012	2	2012-09-16	Indianapolis	Minnesota	1:00pm
+2012	2	2012-09-16	St. Louis	Washington	4:05pm
+2012	2	2012-09-16	Seattle	Dallas	4:05pm
+2012	2	2012-09-16	Pittsburgh	Jets	4:05pm
+2012	2	2012-09-16	San Diego	Tennessee	4:05pm
+2012	2	2012-09-16	San Francisco	Detroit	8:20pm
+2012	2	2012-09-17	Atlanta	Denver	8:30pm
