@@ -58,8 +58,6 @@ var current_week = 2;
 
 require('./routes/week')(app, current_week);
 
-
-
 app.get('/', function(req, res) {
 	playersProvider.findAll(function(error, players) {
 		gamesProvider.findByWeek(current_week, function(error, games) {
